@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ohsocute-premium kids wear brand-0 to 10</title>
+<meta charset="UTF-8">
+  <meta name="description" content="premium kids wear brand in India">
+  <meta name="keywords" content="kids wear, ohsocute, premium kids wear">
+  <meta name="author" content="ohsocute">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="">
+</head>
+<body>
+
+ <!-- Loading Bar -->
+    <div class="loading-bar"></div>
+
+    <!-- Diagonal Scrolling Strip -->
+    <div class="scroll-strip">
+        <div class="scroll-content">
+            <span class="scroll-text">STAY TUNED • NEW COLLECTION • STYLISH KIDSWEAR • BIG VIBES • OPENING SOON • COLOURFUL • STAY TUNED • CUTE • OH SO CUTE • NEW COLLECTION • NEW ARRIVALS LOADING • NEW COLLECTION • TINY STYLES • NEW COLLECTION • STAY TUNED • NEW COLLECTION •</span>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="bg-element bg-element-1"></div>
+    <div class="bg-element bg-element-2"></div>
+    <div class="bg-element bg-element-3"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1 class="main-title">
+            <span style="font-size: 32px;" class="title-line">Something Cute is</span>
+            <span style="font-size: 82px; letter-spacing: -5px;" class="title-line">Coming Your Way!</span>
+            <p style="font-size: 18px;
+    font-weight: normal; text-transform: math-auto;
+    letter-spacing: 0px;
+    margin-top: 24px; line-height: 24px;">A world of playful colors, cozy fabrics, and trendy styles for kids is about to open. <br> Get ready to dress up the tiny trendsetters!</p>
+        </h1>
+
+        <div class="subscription-section">
+           <!--  <form class="email-form" id="emailForm">
+                <input 
+                    type="email" 
+                    class="email-input" 
+                    placeholder="Enter your email"
+                    required
+                    id="emailInput"
+                >
+                <button type="submit" class="notify-btn">Notify Me</button>
+            </form> -->
+
+            <div class="social-section">
+                <p class="social-text">Follow Us</p>
+                <div class="social-links">
+                    <img style="height: 200px;" src="images/insta.qr.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const button = document.querySelector('.notify-btn');
+            const originalText = button.textContent;
+            
+            if (email) {
+                button.textContent = '✨ Thank You!';
+                button.style.background = '#03C883';
+                button.style.color = 'white';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#232325';
+                    button.style.color = '#FDD900';
+                    document.getElementById('emailInput').value = '';
+                }, 3000);
+            }
+        });
+
+        // Add interactive hover effects
+        const titleLines = document.querySelectorAll('.title-line');
+        titleLines.forEach((line, index) => {
+            line.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(15px) scale(1.05)';
+                this.style.textShadow = '5px 5px 0px rgba(0, 0, 0, 0.1)';
+            });
+            
+            line.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+                this.style.textShadow = 'none';
+            });
+        });
+
+        // Add scroll parallax effect to background elements
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const bgElements = document.querySelectorAll('.bg-element');
+            
+            bgElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Add click interaction to social links
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Initialize page animations
+        window.addEventListener('load', function() {
+            // Remove loading bar after page loads
+            setTimeout(() => {
+                const loadingBar = document.querySelector('.loading-bar');
+                if (loadingBar) {
+                    loadingBar.style.opacity = '0';
+                    setTimeout(() => loadingBar.remove(), 500);
+                }
+            }, 2000);
+        });
+
+        // Add continuous scroll animation restart
+        const scrollContent = document.querySelector('.scroll-content');
+        scrollContent.addEventListener('animationiteration', function() {
+            // Animation restarts automatically due to infinite loop
+        });
+
+        // Touch interaction for mobile
+        document.addEventListener('touchstart', function(e) {
+            const touch = e.touches[0];
+            const bgElements = document.querySelectorAll('.bg-element');
+            const x = touch.clientX / window.innerWidth;
+            const y = touch.clientY / window.innerHeight;
+            
+            bgElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                const moveX = (x - 0.5) * speed * 20;
+                const moveY = (y - 0.5) * speed * 20;
+                
+                element.style.transform += ` translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

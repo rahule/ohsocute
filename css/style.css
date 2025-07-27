@@ -1,0 +1,383 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Manrope", sans-serif;
+            background-color: #03C883;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Main Typography */
+        .main-title {
+            font-weight: 900;
+            font-size: clamp(3rem, 12vw, 8rem);
+            line-height: 0.85;
+            text-align: center;
+            letter-spacing: -1px;
+            color: #fff;
+            text-transform: lowercase;
+            margin-bottom: 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .title-line {
+            display: block;
+            margin-bottom: 0.1em;
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+        .title-line:nth-child(1) {
+            animation: slideInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .title-line:nth-child(2) {
+            animation: slideInUp 0.8s ease-out 0.4s forwards;
+            color: #fff;
+
+        }
+
+        .title-line:nth-child(3) {
+            animation: slideInUp 0.8s ease-out 0.6s forwards;
+            color: #F31649;
+        }
+
+        .title-line:nth-child(4) {
+            animation: slideInUp 0.8s ease-out 0.8s forwards;
+            color: #232325;
+        }
+
+        @keyframes slideInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Diagonal Scrolling Strip */
+        .scroll-strip {
+           position: fixed;
+            top: 20px;
+            left: -20%;
+            width: 140%;
+            height: 90px;
+            background: #FDD900;
+            transform: rotate(-13deg);
+            transform-origin: center;
+            z-index: 5;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-content {
+            display: flex;
+            white-space: nowrap;
+            animation: scrollLeft 25s linear infinite;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #232325;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-text {
+            padding-right: 80px;
+            display: inline-block;
+        }
+
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Subscription Section */
+        .subscription-section {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 1.2s forwards;
+            margin-top: 0;
+        }
+
+        .subscription-title {
+            display: none;
+        }
+
+        .subscription-subtitle {
+            display: none;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+    padding: 18px 25px;
+    border: 1px solid #232325;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #fff;
+    color: #232325;
+        }
+
+        .email-input:focus {
+            border-color: #F31649;
+            box-shadow: 0 0 0 8px rgba(243, 22, 73, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .email-input::placeholder {
+            color: #999;
+            font-weight: 500;
+        }
+
+        .notify-btn {
+            padding: 18px 35px;
+            background: #232325;
+            color: #FDD900;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notify-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .notify-btn:hover::before {
+            left: 100%;
+        }
+
+        .notify-btn:hover {
+            background: #F31649;
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(243, 22, 73, 0.3);
+        }
+
+        .notify-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* Social Links */
+        .social-section {
+            margin-top: 25px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.6s forwards;
+        }
+
+        .social-text {
+            color: #232325;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(45deg, #F31649, #FDD900);
+            color: white;
+        }
+
+        .social-link.facebook {
+            background: #03C883;
+            color: white;
+        }
+
+        .social-link.twitter {
+            background: #232325;
+            color: #FDD900;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Background Elements */
+        .bg-element {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .main-title {
+                font-size: clamp(2.5rem, 15vw, 5rem);
+                margin-bottom: 40px;
+            }
+
+            .scroll-strip {
+                height: 80px;
+                transform: rotate(-10deg);
+            }
+
+            .scroll-content {
+                font-size: 1rem;
+            }
+
+            .subscription-section {
+                margin: 0;
+                padding: 0;
+            }
+
+            .email-form {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .notify-btn {
+                width: 100%;
+            }
+
+            .bg-element-1,
+            .bg-element-2,
+            .bg-element-3 {
+                opacity: 0.05;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.2rem;
+                line-height: 0.9;
+            }
+
+            .scroll-strip {
+                height: 60px;
+                transform: rotate(-12deg);
+            }
+
+            .scroll-content {
+                font-size: 0.9rem;
+            }
+
+            .subscription-section {
+                margin: 0;
+                padding: 0;
+            }
+
+            .subscription-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Hover effects for main title */
+        .title-line {
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .title-line:hover {
+            transform: translateX(10px) scale(1.02);
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Loading animation */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #03C883, #FDD900, #F31649);
+            z-index: 1000;
+            animation: loading 2s ease-in-out;
+            transform-origin: left;
+        }
+
+        @keyframes loading {
+            0% { 
+                width: 0%; 
+                transform: scaleX(0);
+            }
+            50% {
+                width: 70%;
+                transform: scaleX(1);
+            }
+            100% { 
+                width: 100%;
+                transform: scaleX(1);
+            }
+        }
